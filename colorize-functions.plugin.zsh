@@ -8,16 +8,16 @@ has_cmd() {
 if has_cmd bat; then
   if [ -n "$ZSH_VERSION" ]; then
     functions() {
-      builtin functions "$@" | bat --paging=never -plzsh
+      builtin functions "$@" | bat -pplzsh
     }
     declare() {
-      builtin declare "$@" | bat --paging=never -plzsh
+      builtin declare "$@" | bat -pplzsh
     }
     alias declare=\declare
     unfunction has_cmd
   else
     declare() {
-      builtin declare "$@" | bat --paging=never -plbash
+      builtin declare "$@" | bat -pplbash
     }
     unset has_cmd
   fi
