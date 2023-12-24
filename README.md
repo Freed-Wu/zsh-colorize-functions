@@ -56,7 +56,7 @@ manager, it can be installed correctly.
 ### bash
 
 ```sh
-. /the/path/of/this/plugin/colorize-functions.plugin.zsh
+. /the/path/of/this/plugin/zsh-colorize-functions.plugin.zsh
 ```
 
 ## Similar Projects
