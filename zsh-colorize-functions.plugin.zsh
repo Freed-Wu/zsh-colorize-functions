@@ -8,7 +8,16 @@ has_cmd() {
 if has_cmd bat; then
   if [ -n "$ZSH_VERSION" ]; then
     functions() {
-      builtin functions "$@" | bat -pplzsh
+      local arg is_colorize=1
+      # https://github.com/Freed-Wu/fzf-tab-source/issues/12
+      for arg; do
+        [[ $arg == -? ]] && is_colorize=0 && break
+      done
+      if ((is_colorize)) ; then
+        builtin functions "$@" | bat -pplzsh
+      else
+        builtin functions "$@"
+      fi
     }
     declare() {
       builtin declare "$@" | bat -pplzsh
