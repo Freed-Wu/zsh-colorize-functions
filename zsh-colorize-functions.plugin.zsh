@@ -11,7 +11,7 @@ if has_cmd bat; then
       local arg is_colorize=1
       # https://github.com/Freed-Wu/fzf-tab-source/issues/12
       for arg; do
-        [[ $arg == -? ]] && is_colorize=0 && break
+        [[ $arg == -? && $arg != -- ]] && is_colorize=0 && break
       done
       if ((is_colorize)) ; then
         builtin functions "$@" | bat -pplzsh
