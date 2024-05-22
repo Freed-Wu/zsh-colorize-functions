@@ -1,5 +1,5 @@
 #shellcheck shell=bash disable=SC1001
-has_cmd() {
+function has_cmd() {
 	for opt in "$@"; do
 		command -v "$opt" >/dev/null
 	done
@@ -7,7 +7,7 @@ has_cmd() {
 
 if has_cmd bat; then
   if [ -n "$ZSH_VERSION" ]; then
-    functions() {
+    function functions() {
       local arg is_colorize=1
       # https://github.com/Freed-Wu/fzf-tab-source/issues/12
       for arg; do
@@ -19,13 +19,13 @@ if has_cmd bat; then
         builtin functions "$@"
       fi
     }
-    declare() {
+    function declare() {
       builtin declare "$@" | bat -pplzsh
     }
     alias declare=\declare
     unfunction has_cmd
   else
-    declare() {
+    function declare() {
       builtin declare "$@" | bat -pplbash
     }
     unset has_cmd
