@@ -59,6 +59,11 @@ manager, it can be installed correctly.
 . /the/path/of/this/plugin/zsh-colorize-functions.plugin.zsh
 ```
 
+## Tips
+
+This plugin [conflicts](https://github.com/akinomyoga/ble.sh/discussions/465)
+with [ble.sh](https://github.com/akinomyoga/ble.sh).
+
 ## Similar Projects
 
 - [zsh-help](https://github.com/Freed-Wu/zsh-help): colorize `XXX --help`.

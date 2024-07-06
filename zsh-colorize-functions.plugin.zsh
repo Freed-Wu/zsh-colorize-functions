@@ -35,18 +35,21 @@ if has_cmd bat; then
     alias declare=\declare
     unfunction has_cmd
   else
-    function declare() {
-      local arg
-      local -i is_colorize=1
-      for arg; do
-        [[ $arg != -f ]] && is_colorize=0 && break
-      done
-      if ((is_colorize)) ; then
-        builtin declare "$@" | bat -pplbash
-      else
-        builtin declare "$@"
-      fi
-    }
+    # https://github.com/akinomyoga/ble.sh/discussions/465
+    if [[ ! ${BLE_VERSION-} ]]; then
+      function declare() {
+        local arg
+        local -i is_colorize=1
+        for arg; do
+          [[ $arg != -f ]] && is_colorize=0 && break
+        done
+        if ((is_colorize)) ; then
+          builtin declare "$@" | bat -pplbash
+        else
+          builtin declare "$@"
+        fi
+      }
+    fi
     unset has_cmd
   fi
 fi
